@@ -1,0 +1,124 @@
+﻿@model AplikacjaHodowcy.Models.Szczeniak
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<style>
+    .custom-file-button input[type=file] {
+        margin-left: -2px !important;
+    }
+
+        .custom-file-button input[type=file]::-webkit-file-upload-button {
+            display: none;
+        }
+
+        .custom-file-button input[type=file]::file-selector-button {
+            display: none;
+        }
+
+    .custom-file-button:hover label {
+        background-color: #dde0e3;
+        cursor: pointer;
+    }
+
+</style>
+
+<h1>Create</h1>
+
+<h4>Szczeniak</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group btn-group col-12">
+                <div class="col-11">
+                    <label asp-for="LiniaId" class="control-label"></label>
+                    <select id="LiniaId" asp-for="LiniaId" class="form-control" asp-items="ViewBag.Linie"
+                            onchange="UzupelnijMioty(this,'listaMioty');"></select>
+                </div>
+                <div class="col-1 mt-4">
+                    <button class="btn btn-success" onclick="ShowLiniaCreateModal();">
+                        +
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="MiotId" class="control-label"></label>
+                <select id="listaMioty" asp-for="MiotId" class="form-control" asp-items="ViewBag.Mioty"></select>
+            </div>
+
+            <div class="col-md-12 btn-group pb-2">
+                <div class="form-group col-4 p-0">
+                    <label asp-for="PuppyPhoto" class="control-label"></label>
+                    <img id="PreviewPhoto" src="~/images/noimage.png" alt="Logo Image"
+                         width="125" height="125" />
+
+                    <span asp-validation-for="PhotoUrl" class="text-danger"></span>
+
+                </div>
+                <div class="col-1 p-0">
+                </div>
+                <div class="form-group col-7 p-0">
+                    <div class="input-group custom-file-button mt-5 pt-5">
+                        <input asp-for="PuppyPhoto" class="form-control custom-file-input" id="puppyFile">
+                        <label class="input-group-text" for="puppyFile">Browse</label>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+
+            <div class="form-group pt-0 mt-0">
+                <div id="HiddenDiv" style="visibility: hidden;">
+                    <input asp-for="PhotoUrl" id="PhotoUrl" value="" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <!-- ajax call jako funkcja -->
+    <script type="text/javascript">
+
+        function ShowLiniaCreateModal() {
+            $.ajax(
+                {
+                    url: "/linia/CreateModalForm",
+                    type: 'get',
+                    success: function (response) {
+                        $("#DivCreateDialog").html(response);
+                        ShowCreateModalForm();
+                    }
+                });
+            return;
+        }
+
+    </script>
+
+}
