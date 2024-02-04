@@ -14,7 +14,7 @@ namespace AplikacjaHodowcy.Controllers
             _context = context;
         }
 
-        [Authorize]
+
         public IActionResult Index()
         {
             List<Linia> linie;
@@ -22,6 +22,7 @@ namespace AplikacjaHodowcy.Controllers
             return View(linie);
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Create()
         {
