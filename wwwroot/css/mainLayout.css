@@ -1,0 +1,32 @@
+﻿
+body {
+    background: linear-gradient(to top, #001f3f, #a3f7bf);
+    color: navy;
+}
+
+.display-4 {
+    font-family: 'Custom Font', lexend;
+    font-weight: bold;
+    color: navy;
+}
+
+.navbar-custom {
+    background-color: navy;
+    color: white; 
+}
+
+.welcome-heading {
+    font-size: 24px;
+}
+
+.photo-container {
+    position: relative;
+    margin-top: 50px;
+}
+
+.photo {
+    max-width: 450px;
+    max-height: 450px;
+    border: 2px solid #fff;
+    position: absolute;
+}
