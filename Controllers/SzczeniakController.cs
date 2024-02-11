@@ -116,6 +116,14 @@ namespace AplikacjaHodowcy.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Book(int id)
+        {
+            // Przekierowanie do akcji SendMail
+            return RedirectToAction("SendMail", "SendMailController");
+        }
+
         private List<SelectListItem> GetLinie()
         {
             var listaLinie = new List<SelectListItem>();
