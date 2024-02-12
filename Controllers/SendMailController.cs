@@ -27,14 +27,14 @@ namespace AplikacjaHodowcy.Controllers
                 MailMessage mail = new MailMessage();
                 mail.Subject = sendMail.Subject;
                 mail.From = new MailAddress(sendMail.From);
-                mail.To.Add(sendMail.To);
+                mail.To.Add("nikola.niestroj@gmail.com");
                 mail.IsBodyHtml = true;
                 mail.Body = sendMail.Body;
 
                 using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com"))
                 {
                     smtpClient.Port = 587;
-                    smtpClient.Credentials = new NetworkCredential(sendMail.From, sendMail.Password);
+                    smtpClient.Credentials = new NetworkCredential(sendMail.From, sendMail.Password); //rhoreiquivviyhbi
                     smtpClient.EnableSsl = true;
                     smtpClient.Send(mail);
                 }

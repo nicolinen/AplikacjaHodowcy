@@ -18,7 +18,7 @@ namespace Hodowla.Controllers
         public IActionResult Index()
         {
             List<Miot> Mioty;
-            Mioty = _context.Mioty.ToList();
+            Mioty = _context.Mioty.Include(m => m.Linia).ToList();
             return View(Mioty);
         }
 

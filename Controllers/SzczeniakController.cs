@@ -20,7 +20,7 @@ namespace AplikacjaHodowcy.Controllers
         public IActionResult Index()
         {
             List<Szczeniak> Szczeniaki;
-            Szczeniaki = _context.Szczeniaki.ToList();
+            Szczeniaki = _context.Szczeniaki.Include(s => s.Miot).ToList();
             return View(Szczeniaki);
         }
 
