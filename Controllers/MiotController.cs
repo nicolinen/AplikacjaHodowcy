@@ -3,30 +3,30 @@ using AplikacjaHodowcy.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using AplikacjaHodowcy.Repositories;
 
 namespace Hodowla.Controllers
 {
     public class MiotController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IMiotRepository _miotRepository;
 
-        public MiotController(ApplicationDbContext context)
+        public MiotController(IMiotRepository miotRepository)
         {
-            _context = context;
+            _miotRepository = miotRepository;
         }
 
         public IActionResult Index()
         {
-            List<Miot> Mioty;
-            Mioty = _context.Mioty.Include(m => m.Linia).ToList();
-            return View(Mioty);
+            List<Miot> mioty = _miotRepository.GetWithLinia();
+            return View(mioty);
         }
 
         [HttpGet]
         public IActionResult Create()
         {
             Miot Miot = new Miot();
-            ViewBag.Linie = GetLinie();
+            ViewBag.Linie = _miotRepository.GetLinie();
             return View(Miot);
         }
 
@@ -34,15 +34,25 @@ namespace Hodowla.Controllers
         [HttpPost]
         public IActionResult Create(Miot Miot)
         {
-            _context.Add(Miot);
-            _context.SaveChanges();
-            return RedirectToAction(nameof(Index));
+            if (ModelState.IsValid)
+            {
+                _miotRepository.Add(Miot);
+                return RedirectToAction(nameof(Index));
+            }
+            ViewBag.Linie = _miotRepository.GetLinie();
+            return View(Miot);
+
         }
 
         [HttpGet]
         public IActionResult Details(int Id)
         {
-            Miot Miot = _context.Mioty.Where(m => m.Id == Id).FirstOrDefault();
+            Miot Miot = _miotRepository.GetById(Id);
+            
+            if (Miot == null)
+            {
+                return NotFound();
+            }
 
             return View(Miot);
         }
@@ -50,9 +60,13 @@ namespace Hodowla.Controllers
         [HttpGet]
         public IActionResult Edit(int Id)
         {
-            Miot Miot = _context.Mioty.Where(m => m.Id == Id).FirstOrDefault();
+            Miot Miot = _miotRepository.GetById(Id);
 
-            ViewBag.Linie = GetLinie();
+            if (Miot == null)
+            {
+                return NotFound();
+            }
+            ViewBag.Linie = _miotRepository.GetLinie();
             return View(Miot);
         }
 
@@ -60,17 +74,25 @@ namespace Hodowla.Controllers
         [HttpPost]
         public IActionResult Edit(Miot Miot)
         {
-            _context.Attach(Miot);
-            _context.Entry(Miot).State = EntityState.Modified;
-            _context.SaveChanges();
-            return RedirectToAction(nameof(Index));
+            if(ModelState.IsValid)
+            {
+
+                _miotRepository.Update(Miot);
+                return RedirectToAction(nameof(Index));
+            }
+            ViewBag.Linie =  _miotRepository.GetLinie();
+            return View(Miot);
+            
         }
 
         [HttpGet]
         public IActionResult Delete(int Id)
         {
-            Miot Miot = _context.Mioty.Where(m => m.Id == Id).FirstOrDefault();
-
+            Miot Miot = _miotRepository.GetById(Id);
+            if (Miot == null)
+            {
+                return NotFound();
+            }
             return View(Miot);
         }
 
@@ -78,33 +100,15 @@ namespace Hodowla.Controllers
         [HttpPost]
         public IActionResult Delete(Miot Miot)
         {
-            _context.Attach(Miot);
-            _context.Entry(Miot).State = EntityState.Deleted;
-            _context.SaveChanges();
-            return RedirectToAction(nameof(Index));
+            if (ModelState.IsValid)
+            {
+                _miotRepository.Delete(Miot);
+                return RedirectToAction(nameof(Index));
+            }
+            ViewBag.Linie = _miotRepository.GetLinie();
+            return View(Miot);
         }
 
-        private List<SelectListItem> GetLinie()
-        {
-            var listaLinii = new List<SelectListItem>();
 
-            List<Linia> Linie = _context.Linie.ToList();
-
-            listaLinii = Linie.Select(lm => new SelectListItem()
-            {
-                Value = lm.Id.ToString(),
-                Text = lm.Nazwa
-            }).ToList();
-
-            var defItem = new SelectListItem()
-            {
-                Value = "",
-                Text = "----Wybierz linię----"
-            };
-
-            listaLinii.Insert(0, defItem);
-
-            return listaLinii;
-        }
     }
 }
