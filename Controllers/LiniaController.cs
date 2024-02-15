@@ -1,4 +1,5 @@
 ﻿using AplikacjaHodowcy.Data;
+using AplikacjaHodowcy.Interfaces;
 using AplikacjaHodowcy.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -7,18 +8,16 @@ namespace AplikacjaHodowcy.Controllers
 {
     public class LiniaController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ILiniaRepository _liniaRepository;
 
-        public LiniaController(ApplicationDbContext context)
+        public LiniaController(ILiniaRepository liniaRepository)
         {
-            _context = context;
+            _liniaRepository = liniaRepository;
         }
-
 
         public IActionResult Index()
         {
-            List<Linia> linie;
-            linie = _context.Linie.ToList();
+            List<Linia> linie = _liniaRepository.GetAllLinie();
             return View(linie);
         }
 
@@ -34,9 +33,17 @@ namespace AplikacjaHodowcy.Controllers
         [HttpPost]
         public IActionResult Create(Linia linia)
         {
-            _context.Add(linia);
-            _context.SaveChanges();
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                _liniaRepository.Add(linia);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.InnerException.Message);
+                return View(linia);
+            }
+            
         }
 
         [HttpGet]
@@ -49,14 +56,14 @@ namespace AplikacjaHodowcy.Controllers
         [HttpGet]
         public IActionResult Details(int Id)
         {
-            Linia linia = GetLinia(Id);
+            Linia linia = _liniaRepository.GetLinia(Id);
             return View(linia);
         }
 
         [HttpGet]
         public IActionResult Edit(int Id)
         {
-            Linia linia = GetLinia(Id);
+            Linia linia = _liniaRepository.GetLinia(Id);
             return View(linia);
         }
 
@@ -64,23 +71,24 @@ namespace AplikacjaHodowcy.Controllers
         [HttpPost]
         public IActionResult Edit(Linia linia)
         {
-            _context.Attach(linia);
-            _context.Entry(linia).State = EntityState.Modified;
-            _context.SaveChanges();
-            return RedirectToAction(nameof(Index));
+            try 
+            {
+                _liniaRepository.Update(linia);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex) 
+            {
+                ModelState.AddModelError(string.Empty, ex.InnerException.Message);
+                return View(linia);
+            }
+            
         }
 
-        private Linia GetLinia(int id)
-        {
-            Linia linia;
-            linia = _context.Linie.Where(l => l.Id == id).FirstOrDefault();
-            return linia;
-        }
 
         [HttpGet]
         public IActionResult Delete(int Id)
         {
-            Linia linia = GetLinia(Id);
+            Linia linia = _liniaRepository.GetLinia(Id);
             return View(linia);
         }
 
@@ -90,21 +98,16 @@ namespace AplikacjaHodowcy.Controllers
         {
             try
             {
-                _context.Attach(linia);
-                _context.Entry(linia).State = EntityState.Deleted;
-                _context.SaveChanges();
+                Linia exisistingLinia = _liniaRepository.GetLinia(linia.Id);
+                _liniaRepository.Delete(exisistingLinia);
+                return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                _context.Entry(linia).Reload();
                 ModelState.AddModelError("", ex.InnerException.Message);
                 return View(linia);
             }
-            return RedirectToAction(nameof(Index));
+            
         }
-
-
-
-
     }
 }

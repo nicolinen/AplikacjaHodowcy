@@ -8,6 +8,7 @@ using AplikacjaHodowcy.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using AplikacjaHodowcy.Repositories;
+using AplikacjaHodowcy.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
+builder.Services.AddScoped<ILiniaRepository, LiniaRepository>();
 builder.Services.AddScoped<IMiotRepository, MiotRepository>();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
