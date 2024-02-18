@@ -49,12 +49,8 @@
                     <select id="LiniaId" asp-for="LiniaId" class="form-control" asp-items="ViewBag.Linie"
                             onchange="UzupelnijMioty(this,'listaMioty');"></select>
                 </div>
-                <div class="col-1 mt-4">
-                    <button class="btn btn-success" onclick="ShowLiniaCreateModal();">
-                        +
-                    </button>
-                </div>
             </div>
+            <div id="DivCreateDialog"></div>
 
             <div class="form-group">
                 <label asp-for="MiotId" class="control-label"></label>
@@ -102,23 +98,5 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-
-    <!-- ajax call jako funkcja -->
-    <script type="text/javascript">
-
-        function ShowLiniaCreateModal() {
-            $.ajax(
-                {
-                    url: "/linia/CreateModalForm",
-                    type: 'get',
-                    success: function (response) {
-                        $("#DivCreateDialog").html(response);
-                        ShowCreateModalForm();
-                    }
-                });
-            return;
-        }
-
-    </script>
 
 }
