@@ -11,5 +11,6 @@ namespace AplikacjaHodowcy.Interfaces
         //IActionResult CreateModalForm();
         List<Linia> GetAllLinie();
         Linia GetLinia(int id);
+        void SaveChanges();
     }
 }

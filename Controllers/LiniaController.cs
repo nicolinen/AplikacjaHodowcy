@@ -3,6 +3,7 @@ using AplikacjaHodowcy.Interfaces;
 using AplikacjaHodowcy.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AplikacjaHodowcy.Controllers
 {
@@ -48,9 +49,17 @@ namespace AplikacjaHodowcy.Controllers
 
         [HttpGet]
         public IActionResult CreateModalForm()
-        {
+       {
             Linia linia = new Linia();
             return PartialView("_CreateModalForm", linia);
+        }
+
+        [HttpPost]
+        public IActionResult CreateModalForm(Linia linia)
+        {
+            _liniaRepository.Add(linia);
+            _liniaRepository.SaveChanges();
+            return NoContent();
         }
 
         [HttpGet]
@@ -106,8 +115,29 @@ namespace AplikacjaHodowcy.Controllers
             {
                 ModelState.AddModelError("", ex.InnerException.Message);
                 return View(linia);
-            }
-            
+            }    
+        }
+
+        public JsonResult GetLinie()
+        {
+            var listaLinii = new List<SelectListItem>();
+            List<Linia> Linie = _liniaRepository.GetAllLinie();
+
+            listaLinii = Linie.Select(l => new SelectListItem()
+            {
+                Value = l.Id.ToString(),
+                Text = l.Nazwa
+            }).ToList();
+
+            var defItem = new SelectListItem()
+            {
+                Value = "",
+                Text = "----Wybierz Linię----"
+            };
+
+            listaLinii.Insert(0, defItem);
+
+            return Json(listaLinii);
         }
     }
 }

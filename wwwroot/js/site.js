@@ -42,3 +42,38 @@ function ShowCreateModalForm() {
     $("#DivCreateDialogHolder").modal('show');
     return;
 }
+
+function submitModalForm() {
+    var btnSubmit = document.getElementById('btnSubmit');
+    btnSubmit.click();
+}
+
+function refreshLiniaList() {
+    var btnBack = document.getElementById('dupBackBtn');
+    btnBack.click();
+    FillLinie("linie");
+}
+
+function FillLinie(linie) {
+    var listaLinie = $("#" + linie);
+    listaLinie.empty();
+
+    listaLinie.append($('<option>',
+        {
+            value: null,
+            text: "Wybierz linię"
+        }));
+
+    $.getJSON("/linia/GetLinie", function (linie) {
+        if (linie != null && !jQuery.isEmptyObject(linie)) {
+            $.each(linie, function (index, linia) {
+                listaLinie.append($('<option/>',
+                    {
+                        value: linia.value,
+                        text: linia.text
+                    }));
+            });
+        };
+    });
+    return;
+}

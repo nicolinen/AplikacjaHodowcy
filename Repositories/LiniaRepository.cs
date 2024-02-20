@@ -55,5 +55,10 @@ namespace AplikacjaHodowcy.Repositories
             linia = _context.Linie.Where(l => l.Id == id).FirstOrDefault();
             return linia;
         }
+
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
     }
 }
