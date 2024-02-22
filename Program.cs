@@ -18,6 +18,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddScoped<ILiniaRepository, LiniaRepository>();
 builder.Services.AddScoped<IMiotRepository, MiotRepository>();
+builder.Services.AddScoped<ISzczeniakRepository, SzczeniakRepository>();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
