@@ -14,6 +14,10 @@
         public string Description { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
+        public DateTime BirthDate { get; set; } = new DateTime(2022, 1, 1);
+
+        [Required]
         [DisplayName("Linia")]
         [NotMapped]
         public int LiniaId { get; set; }
