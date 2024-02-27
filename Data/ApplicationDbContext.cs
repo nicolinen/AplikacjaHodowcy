@@ -14,5 +14,6 @@ namespace AplikacjaHodowcy.Data
         public virtual DbSet<Miot> Mioty { get; set; }
         public virtual DbSet<Linia> Linie { get; set; }
         public virtual DbSet<Szczeniak> Szczeniaki { get; set; }
+        public virtual DbSet<Konkurs> Konkursy { get; set; }
     }
 }

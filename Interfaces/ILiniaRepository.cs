@@ -1,7 +1,7 @@
 ﻿using AplikacjaHodowcy.Models;
 
 namespace AplikacjaHodowcy.Interfaces
-{
+{   //TODO wykasowac z nazwy Repository -> to sa interfejsy a nie repository
     public interface ILiniaRepository
     {
         Linia GetById(int id);

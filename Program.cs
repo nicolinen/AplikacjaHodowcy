@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using AplikacjaHodowcy.Repositories;
 using AplikacjaHodowcy.Interfaces;
+using AplikacjaHodowcy.KonkursyFactory.Interfaces;
+using AplikacjaHodowcy.KonkursyFactory;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +21,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<ILiniaRepository, LiniaRepository>();
 builder.Services.AddScoped<IMiotRepository, MiotRepository>();
 builder.Services.AddScoped<ISzczeniakRepository, SzczeniakRepository>();
+builder.Services.AddScoped<IKonkursFactory, KonkursFactory>();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
