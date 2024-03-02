@@ -50,7 +50,7 @@ namespace AplikacjaHodowcy.Controllers
                 var kMiedzynarodowy = konkursF as KonkursMiedzynarodowy;
                 if (kMiedzynarodowy != null && !kMiedzynarodowy.CheckKraj())
                 {
-                    ModelState.AddModelError(string.Empty, "Wybrany kraj nie jest dostepny");
+                    ModelState.AddModelError("PhotoPath", "Wybrany kraj nie jest dostepny");
                     return View(konkurs);
                 }
                 _konkursFactory.Add(konkursF);
