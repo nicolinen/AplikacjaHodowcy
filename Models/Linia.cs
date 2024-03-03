@@ -7,6 +7,7 @@
 
         [Required]
         [MaxLength(20)]
+        [Display(Name = "Nazwa Linii")]
         public string Nazwa { get; set; }
 
         [Required]

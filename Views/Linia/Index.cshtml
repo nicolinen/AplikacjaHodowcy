@@ -17,7 +17,7 @@
 @if (User.Identity.IsAuthenticated)
 {
     <p>
-        <a asp-action="Create">Create New</a>
+        <a asp-action="Create">Dodaj linię</a>
     </p>
 }
 <table class="table">
@@ -44,12 +44,12 @@
             <td>
                     @if (User.Identity.IsAuthenticated)
                     {
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edycja</a>
                     }|
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a> |
                     @if (User.Identity.IsAuthenticated)
                     {
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
                     }
             </td>
         </tr>

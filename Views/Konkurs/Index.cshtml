@@ -12,7 +12,7 @@
         <h1>@ViewData["Title"]</h1>
 
         <p>
-            <a asp-action="Create" class="btn btn-primary">Create New</a>
+            <a asp-action="Create" class="btn btn-primary">Dodaj nowy</a>
         </p>
 
         <div class="row">
@@ -25,9 +25,9 @@
                             <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
                             <p class="card-text">@Html.DisplayFor(modelItem => item.Desription)</p>
                             <p class="card-text"><small class="text-muted">@Html.DisplayFor(modelItem => item.Type)</small></p>
-                            <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-primary">Edit</a>
-                            <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-secondary">Details</a>
-                            <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-danger">Delete</a>
+                            <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-primary">Edycja</a>
+                            <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-secondary">Szczegóły</a>
+                            <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-danger">Usuń</a>
                         </div>
                     </div>
                 </div>
