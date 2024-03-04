@@ -28,11 +28,12 @@
                 <input asp-for="Desription" class="form-control" />
                 <span asp-validation-for="Desription" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="PhotoPath" class="control-label"></label>
-                <input asp-for="PhotoPath" class="form-control" />
-                <span asp-validation-for="PhotoPath" class="text-danger"></span>
-            </div>
+    <div class="form-group">
+        <label for="photoFile">Wybierz plik</label>
+        <input type="file" class="form-control-file" id="photoFile" name="PhotoFile" onchange="updatePhotoPath(this)">
+        <span asp-validation-for="PhotoPath" class="text-danger"></span>
+    </div>
+    <input type="hidden" id="photoPath" name="PhotoPath">
             <div class="form-group">
                 <input type="submit" value="Zapisz" class="btn btn-primary" />
             </div>
@@ -47,3 +48,5 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+

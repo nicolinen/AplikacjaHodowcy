@@ -10,15 +10,16 @@
         public string Name { get; set; }
 
         [Required]
-        [MaxLength(100)]
+        [MaxLength(2000)]
+        [Display(Name = "Opis")]
         public string Description { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
+        [Display(Name = "Data narodzin")]
         public DateTime BirthDate { get; set; } = new DateTime(2022, 1, 1);
 
         [Required]
-        [DisplayName("Linia")]
         [NotMapped]
         public int LiniaId { get; set; }
 
@@ -30,9 +31,9 @@
 
         [Required(ErrorMessage = "Proszę dodac zdjecie szczeniaka")]
         [MaxLength(500)]
+        [Display(Name = "Zdjęcie szczeniaka")]
         public string PhotoUrl { get; set; }
 
-        [Display(Name = "Zdjecie szczeniaka")]
         [NotMapped]
         public IFormFile PuppyPhoto { get; set; }
 

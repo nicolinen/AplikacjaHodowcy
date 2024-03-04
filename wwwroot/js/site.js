@@ -32,6 +32,21 @@ function UzupelnijMioty(listaLiniaCtrl, listaMiotId) {
     return;
 }
 
+function updatePhotoPath(input) {
+    var photoPathInput = document.getElementById('photoPath');
+    photoPathInput.value = input.value.split(/(\\|\/)/g).pop(); // Pobiera nazwę pliku po ostatnim znaku \ lub / -> regex
+}
+
+$('#typeSelect').change(function () {
+    var type = $(this).val();
+    $('#additionalFields').empty();
+    if (type === 'Krajowy') {
+        $('#additionalFields').append('<div class="form-group"><label>Krajowe Regulacje:</label><input type="text" class="form-control" name="KrajoweRegulacje" /><span class="text-danger"></span></div>');
+    } else if (type === 'Miedzynarodowy') {
+        $('#additionalFields').append('<div class="form-group"><label>Kraj:</label><input type="text" class="form-control" name="Kraj" /><span class="text-danger"></span></div>');
+    }
+});
+
 $(".custom-file-input").on("change", function () {
     var fileName = $(this).val().split("\\").pop();
     document.getElementById('PreviewPhoto').src = window.URL.createObjectURL(this.files[0]);

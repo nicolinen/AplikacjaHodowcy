@@ -11,7 +11,7 @@
         public string Nazwa { get; set; }
 
         [Required]
-        [MaxLength(50)]
+        [MaxLength(2000)]
         public string Opis { get; set; }
 
     }
