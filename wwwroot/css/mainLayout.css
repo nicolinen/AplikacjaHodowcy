@@ -31,3 +31,10 @@ body {
     border: 2px solid #fff;
     position: absolute;
 }
+
+.small-image {
+    max-width: 30px; /* Maksymalna szerokość obrazka */
+    height: auto; /* Automatyczna wysokość dla zachowania proporcji */
+    margin-left: 20px; /* Dostosuj marginesy według preferencji */
+    max-height: 30px; /* Maksymalna wysokość obrazka */
+}

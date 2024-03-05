@@ -1,4 +1,6 @@
-﻿namespace AplikacjaHodowcy.Models
+﻿using System.Xml.Linq;
+
+namespace AplikacjaHodowcy.Models
 {
     public class Szczeniak
     {
@@ -7,6 +9,7 @@
 
         [Required]
         [MaxLength(50)]
+        [Display(Name = "Imię")]
         public string Name { get; set; }
 
         [Required]
@@ -21,6 +24,7 @@
 
         [Required]
         [NotMapped]
+        [Display(Name = "Nazwa Linii")]
         public int LiniaId { get; set; }
 
         [Required]
@@ -35,6 +39,7 @@
         public string PhotoUrl { get; set; }
 
         [NotMapped]
+        [Display(Name = "Zdjęcie szczeniaka")]
         public IFormFile PuppyPhoto { get; set; }
 
         [NotMapped]

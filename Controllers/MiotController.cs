@@ -53,7 +53,7 @@ namespace Hodowla.Controllers
             {
                 return NotFound();
             }
-
+            //ViewBag.Linie = _miotRepository.GetLinie();
             return View(Miot);
         }
 
@@ -100,13 +100,8 @@ namespace Hodowla.Controllers
         [HttpPost]
         public IActionResult Delete(Miot Miot)
         {
-            if (ModelState.IsValid)
-            {
                 _miotRepository.Delete(Miot);
                 return RedirectToAction(nameof(Index));
-            }
-            ViewBag.Linie = _miotRepository.GetLinie();
-            return View(Miot);
         }
 
 
