@@ -12,16 +12,21 @@
 </head>
 <body>
 
-<h1>Mioty</h1>
+<h1 class="header-create">
+        <span>Mioty</span>
 
-@if (User.Identity.IsAuthenticated)
-{
-    <p>
-        <a asp-action="Create">Dodaj miot</a>
-    </p>
-}
+        @if (User.Identity.IsAuthenticated)
+        {
+            <span class="arrow">&#10148;</span>
+            <span class="add-create">
+                <a asp-action="Create">Dodaj miot</a>
+            </span>
+        }
+</h1>
+
+<div class="table-container">
 <table class="table">
-    <thead>
+    <thead class="table-header">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.ImieMatki)
@@ -68,6 +73,6 @@
 }
     </tbody>
 </table>
-
+    </div>
 </body>
 </html>

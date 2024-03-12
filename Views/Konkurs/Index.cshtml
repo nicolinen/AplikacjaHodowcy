@@ -1,20 +1,29 @@
 ﻿@model IEnumerable<AplikacjaHodowcy.Models.Konkurs>
 
+@{
+    ViewData["Title"] = "Index";
+}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap">
+    <link rel="stylesheet" href="/css/mainLayout.css">
 </head>
 <body>
+    <h1 class="header-create">
+    <span>Konkurs</span>
+
+    @if (User.Identity.IsAuthenticated)
+        {
+        <span class="arrow">&#10148;</span>
+        <span class="add-create">
+                <a asp-action="Create">Dodaj nowy</a>
+        </span>    
+        }
+    </h1>
 
     <div class="container">
-        <h1>@ViewData["Title"]</h1>
-
-        <p>
-            <a asp-action="Create" class="btn btn-primary">Dodaj nowy</a>
-        </p>
-
         <div class="row">
             @foreach (var item in Model)
             {
@@ -25,9 +34,12 @@
                             <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
                             <p class="card-text">@Html.DisplayFor(modelItem => item.Desription)</p>
                             <p class="card-text"><small class="text-muted">@Html.DisplayFor(modelItem => item.Type)</small></p>
-                            <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-primary">Edycja</a>
-                            <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-secondary">Szczegóły</a>
-                            <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-danger">Usuń</a>
+                            <!-- <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-secondary">Szczegóły</a> -->
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-primary">Edycja</a>
+                                <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-danger">Usuń</a>
+                            }
                         </div>
                     </div>
                 </div>

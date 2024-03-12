@@ -13,26 +13,31 @@
 </head>
 <body>
 
-<h1>Szczeniaki</h1>
+    <h1 class="header-create">
+        <span>Szczeniaki </span>
 
-@if (User.Identity.IsAuthenticated)
-{
-    <p>
-        <a asp-action="Create">Dodaj szczeniaka</a>
-    </p>
-}
-<table class="table">
-    <thead>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <span class="arrow">&#10148;</span>
+            <span class="add-create">
+                <a asp-action="Create">Dodaj szczeniaka</a>
+            </span>
+        }
+    </h1>
+
+<div class="table-container">
+        <table class="table">
+    <thead class="table-header" >
         <tr>
-            <th>
+                    <th class="table-color">
                 @Html.DisplayNameFor(model => model.Name)
-            </th>
+                    </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
-                <th>
+            <th>
                     @Html.DisplayNameFor(model => model.BirthDate)
-                </th>
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Miot.NazwaMiotu)
             </th>
@@ -42,6 +47,8 @@
             <th></th>
         </tr>
     </thead>
+
+
     <tbody>
 @foreach (var item in Model) {
         <tr>
@@ -75,6 +82,7 @@
 }
     </tbody>
 </table>
+</div>
 
 </body>
 </html>

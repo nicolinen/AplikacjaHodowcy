@@ -12,16 +12,22 @@
     <link rel="stylesheet" href="/css/mainLayout.css">
 </head>
 
-<h1>Nasze Linie</h1>
+<h1 class="header-create">
+    <span>Nasze Linie</span>
 
-@if (User.Identity.IsAuthenticated)
-{
-    <p>
-        <a asp-action="Create">Dodaj linię</a>
-    </p>
-}
+    @if (User.Identity.IsAuthenticated)
+    {
+        <span class="arrow">&#10148;</span>
+        <span class="add-create">
+        <a asp-action="Create"> Dodaj linię</a>
+        </span>
+    }
+</h1>
+
+
+<div class="table-container">
 <table class="table">
-    <thead>
+    <thead class="table-header">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Nazwa)
@@ -56,4 +62,5 @@
 }
     </tbody>
 </table>
+</div>
 </html>

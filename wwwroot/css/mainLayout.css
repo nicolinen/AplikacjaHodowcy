@@ -38,3 +38,31 @@ body {
     margin-left: 20px; /* Dostosuj marginesy według preferencji */
     max-height: 30px; /* Maksymalna wysokość obrazka */
 }
+
+.table-container {
+    overflow-y: auto;
+    max-height: 630px; /* Ustaw maksymalną wysokość kontenera */
+}
+
+.table-header {
+    position: sticky; /* Ustawia nagłówek na "sticky" */
+    top: 0; /* Ustawia nagłówek na górze widoku */
+    z-index: 1000; /* Ustawia nagłówek na najwyższym poziomie z-index */
+    padding: 10px; /* Dodaje odstęp od góry */
+    color: black;
+    background-color: #808080;
+}
+
+.table-color {
+    background-color: #ff6a00;
+}
+
+.header-create {
+    display: flex;
+    align-items: center; /* Wyrównaj elementy w pionie */
+}
+
+    .header-create .add-create {
+        margin-left: 10px; /* Dodaj odstęp między napisem a linkiem */
+        font-size: 0.60em;
+    }
