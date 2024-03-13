@@ -15,6 +15,13 @@
         [Display(Name = "Imię Ojca")]
         public string ImieOjca { get; set; }
 
+        [MaxLength(5000)]
+        [Display(Name = "O rodzicach")]
+        public string OpisRodzicow { get; set; }
+
+        [Required]
+        public string PhotoPath { get; set; }
+
         [Required]
         [MaxLength(30)]
         [Display(Name = "Nazwa Miotu")]

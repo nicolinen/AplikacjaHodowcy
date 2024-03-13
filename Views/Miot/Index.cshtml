@@ -35,6 +35,9 @@
                 @Html.DisplayNameFor(model => model.ImieOjca)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.OpisRodzicow)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.NazwaMiotu)
             </th>
             <th>
@@ -52,6 +55,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ImieOjca)
             </td>
+            <th>
+                @Html.DisplayFor(modelItem => item.OpisRodzicow)
+            </th>
             <td>
                 @Html.DisplayFor(modelItem => item.NazwaMiotu)
             </td>
@@ -61,10 +67,10 @@
             <td>
                     @if (User.Identity.IsAuthenticated)
                     {
-                <a asp-action="Edit" asp-route-id="@item.Id">Edycja</a> 
-                    }|
-                <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a> |
-                    @if (User.Identity.IsAuthenticated)
+                <a asp-action="Edit" asp-route-id="@item.Id">Edycja</a><br/>
+                    }
+                <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a><br/>
+                   @if (User.Identity.IsAuthenticated)
                     {
                 <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
                     }

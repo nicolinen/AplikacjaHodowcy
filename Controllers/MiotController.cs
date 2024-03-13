@@ -53,7 +53,7 @@ namespace Hodowla.Controllers
             {
                 return NotFound();
             }
-            //ViewBag.Linie = _miotRepository.GetLinie();
+            ViewBag.Linie = _miotRepository.GetLinie();
             return View(Miot);
         }
 
