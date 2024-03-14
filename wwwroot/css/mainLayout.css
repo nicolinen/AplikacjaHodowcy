@@ -66,3 +66,24 @@ body {
         margin-left: 10px; /* Dodaj odstęp między napisem a linkiem */
         font-size: 0.60em;
     }
+
+
+.details {
+    background-repeat: no-repeat;
+    width: auto;
+    height: 300px;
+    float: right;
+    margin-left: 10px;
+    border: 3px solid black;
+    position: relative;
+    top: -50px;
+}
+
+.backContainer {
+    text-align: left 10px; /* Wyśrodkowanie elementów w poziomie */
+    position: sticky; /* lub fixed, w zależności od preferencji */
+    top: 20px; /* Odległość od górnej krawędzi strony */
+    z-index: 999; /* Zapewnia, że linki będą zawsze na wierzchu */
+    padding: 10px; /* Dodatkowy odstęp, aby linki były czytelniejsze */
+}
+

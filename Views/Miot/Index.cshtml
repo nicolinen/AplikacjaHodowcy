@@ -55,8 +55,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ImieOjca)
             </td>
-            <th>
-                @Html.DisplayFor(modelItem => item.OpisRodzicow)
+            <th style="text-align: justify;">
+                            <span id="opisRodzicow_@(item.Id)">@Html.DisplayFor(modelItem => item.OpisRodzicow)</span>
             </th>
             <td>
                 @Html.DisplayFor(modelItem => item.NazwaMiotu)
@@ -76,9 +76,19 @@
                     }
             </td>
         </tr>
+                    <script>
+                        var opisRodzicow = document.getElementById('opisRodzicow_@(item.Id)');
+                        var maxLength = 100; // Maksymalna liczba znaków do wyświetlenia
+
+                        if (opisRodzicow.textContent.length > maxLength) {
+                            opisRodzicow.textContent = opisRodzicow.textContent.substring(0, maxLength) + '...';
+                        }
+                    </script>
 }
     </tbody>
 </table>
     </div>
 </body>
 </html>
+
+
