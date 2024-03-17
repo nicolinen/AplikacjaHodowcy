@@ -18,7 +18,7 @@ namespace AplikacjaHodowcy.Controllers
 
         public IActionResult Index()
         {
-            List<Linia> linie = _liniaRepository.GetAllLinie();
+            List<Linia> linie = _liniaRepository.GetAllLinie().OrderBy(l => l.Nazwa).ToList();
             return View(linie);
         }
 

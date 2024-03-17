@@ -20,7 +20,7 @@ namespace AplikacjaHodowcy.Models
         [Required]
         [DataType(DataType.Date)]
         [Display(Name = "Data narodzin")]
-        public DateTime BirthDate { get; set; } = new DateTime(2022, 1, 1);
+        public DateTime BirthDate { get; set; } = DateTime.Now;
 
         [Required]
         [NotMapped]

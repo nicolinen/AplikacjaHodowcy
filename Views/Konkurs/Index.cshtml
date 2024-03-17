@@ -34,6 +34,14 @@
                             <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
                             <p class="card-text">@Html.DisplayFor(modelItem => item.Desription)</p>
                             <p class="card-text"><small class="text-muted">@Html.DisplayFor(modelItem => item.Type)</small></p>
+                            @if (item.Type == "Krajowy")
+                            {
+                                <p class="card-text">@Html.DisplayFor(modelItem => item.KrajoweRegulacje)</p>
+                            } else
+                            {
+                                <p class="card-text">@Html.DisplayFor(modelItem => item.Kraj)</p>    
+                            }
+
                             <!-- <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-secondary">Szczegóły</a> -->
                             @if (User.Identity.IsAuthenticated)
                             {

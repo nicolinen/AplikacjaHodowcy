@@ -18,7 +18,7 @@ namespace Hodowla.Controllers
 
         public IActionResult Index()
         {
-            List<Miot> mioty = _miotRepository.GetWithLinia();
+            List<Miot> mioty = _miotRepository.GetWithLinia().OrderBy(x => x.NazwaMiotu).ToList();
             return View(mioty);
         }
 

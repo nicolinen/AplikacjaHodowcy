@@ -16,7 +16,7 @@
         public string PhotoPath { get; set; }
         //[Required]
         [MaxLength(1000)]
-        public string KrajoweRegulacje{ get; set; } // Dodaj właściwość dla krajowych regulacji
+        public virtual string KrajoweRegulacje{ get; set; } // Dodaj właściwość dla krajowych regulacji
         //[Required]
         [MaxLength(50)]
         public string Kraj { get; set; } // Dodaj właściwość dla kraju

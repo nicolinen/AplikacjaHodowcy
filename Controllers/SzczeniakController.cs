@@ -16,7 +16,7 @@ namespace AplikacjaHodowcy.Controllers
 
         public IActionResult Index()
         {
-            List<Szczeniak> szczeniaki = _szczeniakRepository.GetWithMiot();
+            List<Szczeniak> szczeniaki = _szczeniakRepository.GetWithMiot().OrderBy(s => s.BirthDate).ToList();
             return View(szczeniaki);
         }
 
