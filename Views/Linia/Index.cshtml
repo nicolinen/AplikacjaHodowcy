@@ -45,7 +45,11 @@
                 @Html.DisplayFor(modelItem => item.Nazwa)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Opis)
+                <span id="opisLinia_@(item.Id)">@Html.DisplayFor(modelItem => item.Opis) </span>
+                        <a href="#" id="toggleLink_@(item.Id)" onclick="showMore(@(item.Id)); return false;">Pokaż więcej</a>
+                        <span id="opisFull_@(item.Id)" style="display:none;">
+                            @Html.DisplayFor(modelItem => item.Opis)
+                        </span>
             </td>
             <td>
                     @if (User.Identity.IsAuthenticated)
@@ -59,6 +63,32 @@
                     }
             </td>
         </tr>
+        <script>
+            var opisLinia = document.getElementById('opisLinia_@(item.Id)');
+            var maxLength = 100;
+            var showMoreLink = "Pokaż więcej";
+    
+
+            if (opisLinia.textContent.length > maxLength) {
+                opisLinia.textContent = opisLinia.textContent.substring(0, maxLength) + '...' ;
+            }
+
+ function showMore(itemId) {
+    var opisLinia = document.getElementById('opisLinia_' + itemId);
+    var opisFull = document.getElementById('opisFull_' + itemId);
+    var toggleLink = document.getElementById('toggleLink_' + itemId);
+
+    if (opisFull.style.display === 'none') { // Sprawdzamy, czy pełny opis jest ukryty
+        opisLinia.style.display = 'none'; // Ukrywamy skrócony opis
+        opisFull.style.display = 'inline'; // Pokazujemy pełny opis
+        toggleLink.textContent = 'Pokaż mniej'; // Zmieniamy tekst linku na "Pokaż mniej"
+    } else {
+        opisLinia.style.display = 'inline'; // Pokazujemy skrócony opis
+        opisFull.style.display = 'none'; // Ukrywamy pełny opis
+        toggleLink.textContent = 'Pokaż więcej'; // Zmieniamy tekst linku na "Pokaż więcej"
+    }
+}
+        </script>
 }
     </tbody>
 </table>

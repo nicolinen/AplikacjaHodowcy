@@ -5,7 +5,7 @@ body {
 }
 
 .display-4 {
-    font-family: 'Custom Font', lexend;
+    font-family: "Roboto", sans-serif;
     font-weight: bold;
     color: navy;
 }
@@ -86,4 +86,3 @@ body {
     z-index: 999; /* Zapewnia, że linki będą zawsze na wierzchu */
     padding: 10px; /* Dodatkowy odstęp, aby linki były czytelniejsze */
 }
-
