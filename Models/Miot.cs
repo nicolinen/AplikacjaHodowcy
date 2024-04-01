@@ -27,7 +27,7 @@
         [Display(Name = "Nazwa Miotu")]
         public string NazwaMiotu { get; set; }
 
-        [ForeignKey("LiniaId")]
+        [ForeignKey("Linia")]
         public int LiniaId { get; set; }
 
         public virtual Linia Linia { get; set; }

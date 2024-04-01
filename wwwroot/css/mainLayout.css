@@ -86,3 +86,13 @@ body {
     z-index: 999; /* Zapewnia, że linki będą zawsze na wierzchu */
     padding: 10px; /* Dodatkowy odstęp, aby linki były czytelniejsze */
 }
+
+a.custom-link {
+    color: white; /* Domyślny kolor linku */
+    transition: color 0.3s; /* Dodaj płynne przejście zmiany koloru */
+}
+
+    /* Definicja stylu dla linku po najechaniu kursorem */
+    a.custom-link:hover {
+        color: #cccccc; /* Kolor linku po najechaniu kursorem */
+    }

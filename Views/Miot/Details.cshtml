@@ -46,18 +46,15 @@
         <div class="backContainer">
             @if (User.Identity.IsAuthenticated)
             {
-                <a asp-action="Edit" asp-route-id="@Model?.Id">Edytuj</a>
+                <a asp-action="Edit" asp-route-id="@Model?.Id" class="custom-link">Edytuj</a>
             }|
-            <a asp-action="Index">Wróć do listy</a>
+            <a asp-action="Index" class="custom-link">Wróć do listy</a>
         </div>
         <dt class="col-sm-2"></dt>
         <dd class="col-sm-10">
             <img id="PhotoPath"  class="details" src="~/images/@Model.PhotoPath" alt="Image"  />
         </dd>
-
-
     </dl>
-
 </div>
 
 
