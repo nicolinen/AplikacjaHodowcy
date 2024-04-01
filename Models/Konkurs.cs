@@ -6,13 +6,13 @@
         public int Id { get; set; }
        // [Required]
         public string Type { get; set; }
-        [Required]
+        [Required(ErrorMessage = "To pole jest wymagane")]
         [MaxLength(40)]
         public string Name { get; set; }
-        [Required]
+        [Required(ErrorMessage = "To pole jest wymagane")]
         [MaxLength(2000)]
         public string Desription { get; set; }
-        [Required]
+        [Required(ErrorMessage = "To pole jest wymagane")]
         public string PhotoPath { get; set; }
         //[Required]
         [MaxLength(1000)]

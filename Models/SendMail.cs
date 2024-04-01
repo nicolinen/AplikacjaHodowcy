@@ -2,15 +2,15 @@
 {
     public class SendMail
     {
-        [Required]
+        [Required(ErrorMessage = "To pole jest wymagane")]
         public string From { get; set; }
-        [Required]
+        [Required(ErrorMessage = "To pole jest wymagane")]
         public string To { get; set; }
-        [Required]
+        [Required(ErrorMessage = "To pole jest wymagane")]
         public string Subject { get; set; }
-        [Required]
+        [Required(ErrorMessage = "To pole jest wymagane")]
         public string Body { get; set; }
-        [Required]
+        [Required(ErrorMessage = "To pole jest wymagane")]
         public string Password { get; set; }
     }
 }
