@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="/css/mainLayout.css">
 </head>
 
-<h1>Dodaj konkurs</h1>
+<h1>Dodaj wystawę</h1>
 
 <form asp-action="Create" method="post" id="konkursForm">
     <div class="form-group">
-        <label>Type:</label>
+        <label>Typ:</label>
         <select id="typeSelect" class="form-control" name="Type">
-            <option value="Krajowy">Krajowy</option>
-            <option value="Miedzynarodowy">Międzynarodowy</option>
+            <option value="Krajowa">Krajowa</option>
+            <option value="Miedzynarodowa">Międzynarodowa</option>
         </select>
         <span asp-validation-for="Type" class="text-danger"></span>
     </div>

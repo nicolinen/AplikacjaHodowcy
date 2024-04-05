@@ -56,9 +56,9 @@ namespace AplikacjaHodowcy.KonkursyFactory
 
         public Konkurs CreateKrajowy(string type, string name, string desription, string photoPath, string krajoweRegulacje)
         {
-            if (type != "Krajowy")
+            if (type != "Krajowa")
             {
-                throw new ArgumentException("Niepoprawny typ konkursu.");
+                throw new ArgumentException("Niepoprawny typ wystawy.");
             }
 
             return new KonkursKrajowy
@@ -73,9 +73,9 @@ namespace AplikacjaHodowcy.KonkursyFactory
 
         public Konkurs CreateMiedzynarodowy(string type, string name, string desription, string photoPath, string kraj)
         {
-            if (type != "Miedzynarodowy")
+            if (type != "Miedzynarodowa")
             {
-                throw new ArgumentException("Niepoprawny typ konkursu.");
+                throw new ArgumentException("Niepoprawny typ wystawy.");
             }
 
             return new KonkursMiedzynarodowy

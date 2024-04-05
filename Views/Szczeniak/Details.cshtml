@@ -4,11 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
-<head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap">
     <link rel="stylesheet" href="/css/mainLayout.css">
-</head>
 
 <h1>Szczegóły</h1>
 
@@ -42,17 +40,6 @@
             <input asp-for="@Model.Miot.NazwaMiotu" class="form-control form-control-plaintext" readonly />
             </div>
 
-           <!-- <div class="col-md-12 btn-group pb-2"> -->
-                <!--<div class="col-md-4 text-right">
-                    <label asp-for="PuppyPhoto" class="control-label"></label> 
-                    <img id="PuppyPhoto" src="~/images/@Model.PhotoUrl" alt="Logo Image" 
-                    width="125" height="125"/>
-                        
-                </div>
-                <div class="col-1 p-0">
-                </div> -->
-           <!-- </div> -->
-
 
             <div class="form-group">
         @if (User.Identity.IsAuthenticated)
@@ -63,7 +50,7 @@
 
         <div class="form-group">
             <a class="btn btn-primary" asp-controller="SendMail" asp-action="SendMail">Zarezerwuj</a>
-        </div>
+            </div>
 
             <div class="form-group pt-0 mt-0">
                 <div ID="HiddenDiv" style="visibility: hidden;">

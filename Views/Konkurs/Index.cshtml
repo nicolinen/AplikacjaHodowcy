@@ -12,13 +12,13 @@
 </head>
 <body>
     <h1 class="header-create">
-    <span>Konkurs</span>
+    <span>Wystawa</span>
 
     @if (User.Identity.IsAuthenticated)
         {
         <span class="arrow">&#10148;</span>
         <span class="add-create">
-                <a asp-action="Create">Dodaj nowy</a>
+                <a asp-action="Create">Dodaj nową</a>
         </span>    
         }
     </h1>
@@ -34,7 +34,7 @@
                             <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
                             <p class="card-text">@Html.DisplayFor(modelItem => item.Desription)</p>
                             <p class="card-text"><small class="text-muted">@Html.DisplayFor(modelItem => item.Type)</small></p>
-                            @if (item.Type == "Krajowy")
+                            @if (item.Type == "Krajowa")
                             {
                                 <p class="card-text">@Html.DisplayFor(modelItem => item.KrajoweRegulacje)</p>
                             } else

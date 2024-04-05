@@ -39,12 +39,12 @@ namespace AplikacjaHodowcy.Controllers
                 return View(konkurs);
             }
 
-            if (konkurs.Type == "Krajowy")
+            if (konkurs.Type == "Krajowa")
             {
                 var konkursF = _konkursFactory.CreateKrajowy(konkurs.Type, konkurs.Name, konkurs.Desription, konkurs.PhotoPath, konkurs.KrajoweRegulacje);
                 _konkursFactory.Add(konkursF);
             }
-            else if (konkurs.Type == "Miedzynarodowy")
+            else if (konkurs.Type == "Miedzynarodowa")
             {
                 var konkursF = _konkursFactory.CreateMiedzynarodowy(konkurs.Type, konkurs.Name, konkurs.Desription, konkurs.PhotoPath, konkurs.Kraj);
                 var kMiedzynarodowy = konkursF as KonkursMiedzynarodowy;

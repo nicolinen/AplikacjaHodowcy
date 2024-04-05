@@ -40,9 +40,9 @@ function updatePhotoPath(input) {
 $('#typeSelect').change(function () {
     var type = $(this).val();
     $('#additionalFields').empty();
-    if (type === 'Krajowy') {
+    if (type === 'Krajowa') {
         $('#additionalFields').append('<div class="form-group"><label>Krajowe Regulacje:</label><input type="text" class="form-control" name="KrajoweRegulacje" /><span class="text-danger"></span></div>');
-    } else if (type === 'Miedzynarodowy') {
+    } else if (type === 'Miedzynarodowa') {
         $('#additionalFields').append('<div class="form-group"><label>Kraj:</label><input type="text" class="form-control" name="Kraj" /><span class="text-danger"></span></div>');
     }
 });
