@@ -1,6 +1,7 @@
 ﻿using AplikacjaHodowcy.Data;
 using AplikacjaHodowcy.Interfaces;
 using AplikacjaHodowcy.Models;
+using Newtonsoft.Json;
 using System;
 
 namespace AplikacjaHodowcy.Controllers
@@ -43,6 +44,8 @@ namespace AplikacjaHodowcy.Controllers
         public IActionResult Details(int Id)
         {
             Szczeniak szczeniak = _szczeniakRepository.GetByIdAndDetails(Id);
+            HttpContext.Session.SetString("Szczeniak", JsonConvert.SerializeObject(szczeniak));
+            
             return View(szczeniak);
         }
 

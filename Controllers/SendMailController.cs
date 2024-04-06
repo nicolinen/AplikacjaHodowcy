@@ -4,6 +4,7 @@ using MailKit.Security;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit;
 using MimeKit.Text;
+using Newtonsoft.Json;
 using System.Net;
 using System.Net.Mail;
 
@@ -14,6 +15,10 @@ namespace AplikacjaHodowcy.Controllers
         [HttpGet]
         public IActionResult SendMail()
         {
+            var szczeniakJson = HttpContext.Session.GetString("Szczeniak");
+            var szczeniak = JsonConvert.DeserializeObject<Szczeniak>(szczeniakJson);
+            ViewBag.SzczeniakName = szczeniak.Name;
+
             return View();
         }
 
