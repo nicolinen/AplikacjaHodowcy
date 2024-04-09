@@ -29,7 +29,16 @@
             {
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <img id = "PhotoPath" src="~/images/@item.PhotoPath" alt="Image">
+                        <div class="flip-box">
+                            <div class="flip-box-inner">
+                                <div class="flip-box-front">
+                                    <img id="PhotoPath" src="~/images/@item.PhotoPath" alt="Image" style="width:340px;height:200px">
+                                </div>
+                                <div class="flip-box-back" style="width:340px;height:200px">
+                                    <h2> @Html.DisplayFor(modelItem => item.Desription)</h2>
+                                </div>
+                            </div>
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
                             <p class="card-text">@Html.DisplayFor(modelItem => item.Desription)</p>
