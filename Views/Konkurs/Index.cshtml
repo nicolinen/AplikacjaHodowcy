@@ -12,7 +12,7 @@
 </head>
 <body>
     <h1 class="header-create">
-    <span>Wystawa</span>
+    <span>Wystawy Psów</span>
 
     @if (User.Identity.IsAuthenticated)
         {
@@ -41,7 +41,7 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
-                            <p class="card-text">@Html.DisplayFor(modelItem => item.Desription)</p>
+                            <!--<p class="card-text">@Html.DisplayFor(modelItem => item.Desription)</p>-->
                             <p class="card-text"><small class="text-muted">@Html.DisplayFor(modelItem => item.Type)</small></p>
                             @if (item.Type == "Krajowa")
                             {
