@@ -11,6 +11,8 @@ using AplikacjaHodowcy.Repositories;
 using AplikacjaHodowcy.Interfaces;
 using AplikacjaHodowcy.KonkursyFactory.Interfaces;
 using AplikacjaHodowcy.KonkursyFactory;
+using AplikacjaHodowcy.Mappers;
+using AplikacjaHodowcy.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +24,8 @@ builder.Services.AddScoped<ILiniaRepository, LiniaRepository>();
 builder.Services.AddScoped<IMiotRepository, MiotRepository>();
 builder.Services.AddScoped<ISzczeniakRepository, SzczeniakRepository>();
 builder.Services.AddScoped<IKonkursFactory, KonkursFactory>();
+builder.Services.AddTransient<LiniaMapper>();
+builder.Services.AddScoped<ILiniaService, LiniaService>();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
