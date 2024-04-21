@@ -12,6 +12,8 @@ namespace AplikacjaHodowcy.Repositories
         void Delete(Miot miot);
 
         List<Miot> GetWithLinia();
-        List<SelectListItem> GetLinie();
+        //List<SelectListItem> GetLinie();
+
+        List<Miot> GetAll();
     }
 }

@@ -4,96 +4,110 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using AplikacjaHodowcy.Repositories;
+using AplikacjaHodowcy.Mappers;
+using AplikacjaHodowcy.ViewModels;
+using AplikacjaHodowcy.Interfaces;
 
 namespace Hodowla.Controllers
 {
     public class MiotController : Controller
     {
         private readonly IMiotRepository _miotRepository;
+        private readonly MiotMapper _miotMapper;
+        private readonly IMiotService _miotService;
 
-        public MiotController(IMiotRepository miotRepository)
+        public MiotController(IMiotRepository miotRepository, MiotMapper miotMapper, IMiotService miotService)
         {
             _miotRepository = miotRepository;
+            _miotMapper = miotMapper;
+            _miotService = miotService;
         }
 
         public IActionResult Index()
         {
             List<Miot> mioty = _miotRepository.GetWithLinia().OrderBy(x => x.NazwaMiotu).ToList();
-            return View(mioty);
+            IEnumerable<MiotViewModel> miotyViewModel = _miotMapper.MapMiotToViewModel(mioty);
+            return View(miotyViewModel);
         }
 
         [HttpGet]
         public IActionResult Create()
         {
-            Miot Miot = new Miot();
-            ViewBag.Linie = _miotRepository.GetLinie();
-            return View(Miot);
+            ViewBag.Linie = _miotService.GetLinie();
+            return View(new MiotViewModel());
         }
 
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public IActionResult Create(Miot Miot)
+        public IActionResult Create(MiotViewModel miotViewModel)
         {
             if (ModelState.IsValid)
             {
-                _miotRepository.Add(Miot);
+                _miotRepository.Add(miotViewModel);
                 return RedirectToAction(nameof(Index));
             }
-            ViewBag.Linie = _miotRepository.GetLinie();
-            return View(Miot);
+            ViewBag.Linie = _miotService.GetLinie();
+            return View(miotViewModel);
 
         }
 
         [HttpGet]
         public IActionResult Details(int Id)
         {
-            Miot Miot = _miotRepository.GetById(Id);
-            
-            if (Miot == null)
+            Miot miot = _miotRepository.GetById(Id);
+
+            if (miot == null)
             {
                 return NotFound();
             }
-            ViewBag.Linie = _miotRepository.GetLinie();
-            return View(Miot);
+
+            MiotViewModel miotViewModel = _miotMapper.MapMiotToViewModel(new List<Miot> { miot }).FirstOrDefault(); // Mapuj pojedynczy obiekt Miot
+            ViewBag.Linie = _miotService.GetLinie();
+            return View(miotViewModel);
         }
 
         [HttpGet]
         public IActionResult Edit(int Id)
         {
-            Miot Miot = _miotRepository.GetById(Id);
+            Miot miot = _miotRepository.GetById(Id);
 
-            if (Miot == null)
+            if (miot == null)
             {
                 return NotFound();
             }
-            ViewBag.Linie = _miotRepository.GetLinie();
-            return View(Miot);
+
+            MiotViewModel miotViewModel = _miotMapper.MapMiotToViewModel(new List<Miot> { miot }).FirstOrDefault(); // Mapuj pojedynczy obiekt Miot
+            ViewBag.Linie = _miotService.GetLinie();
+            return View(miotViewModel);
         }
+
 
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public IActionResult Edit(Miot Miot)
+        public IActionResult Edit(MiotViewModel miotViewModel)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-
-                _miotRepository.Update(Miot);
+                Miot miot = _miotMapper.MapViewModelToMiot(miotViewModel);
+                _miotRepository.Update(miot);
                 return RedirectToAction(nameof(Index));
             }
-            ViewBag.Linie =  _miotRepository.GetLinie();
-            return View(Miot);
-            
+            ViewBag.Linie = _miotService.GetLinie();
+            return View(miotViewModel);
         }
+
 
         [HttpGet]
         public IActionResult Delete(int Id)
         {
-            Miot Miot = _miotRepository.GetById(Id);
-            if (Miot == null)
+            Miot miot = _miotRepository.GetById(Id);
+            if (miot == null)
             {
                 return NotFound();
             }
-            return View(Miot);
+
+            MiotViewModel miotViewModel = _miotMapper.MapMiotToViewModel(new List<Miot> { miot }).FirstOrDefault();
+            return View(miotViewModel);
         }
 
         [ValidateAntiForgeryToken]

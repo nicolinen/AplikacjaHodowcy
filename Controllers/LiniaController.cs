@@ -12,18 +12,18 @@ namespace AplikacjaHodowcy.Controllers
     public class LiniaController : Controller
     {
         private readonly ILiniaRepository _liniaRepository;
-        private readonly LiniaMapper _liniaMappingService;
+        private readonly LiniaMapper _liniaMapper;
 
-        public LiniaController(ILiniaRepository liniaRepository, LiniaMapper liniaMappingService)
+        public LiniaController(ILiniaRepository liniaRepository, LiniaMapper liniaMapper)
         {
             _liniaRepository = liniaRepository;
-            _liniaMappingService = liniaMappingService;
+            _liniaMapper = liniaMapper;
         }
 
         public IActionResult Index()
         {
             List<Linia> linie = _liniaRepository.GetAllLinie().OrderBy(l => l.Nazwa).ToList();
-            IEnumerable<LiniaViewModel> linieViewModel = _liniaMappingService.MapLinieToViewModels(linie);
+            IEnumerable<LiniaViewModel> linieViewModel = _liniaMapper.MapLinieToViewModels(linie);
             return View(linieViewModel);
         }
 
@@ -71,7 +71,7 @@ namespace AplikacjaHodowcy.Controllers
         public IActionResult Details(int Id)
         {
             Linia linia = _liniaRepository.GetLinia(Id);
-            LiniaViewModel liniaViewModel = _liniaMappingService.MapLinieToViewModels(new List<Linia> { linia }).FirstOrDefault();
+            LiniaViewModel liniaViewModel = _liniaMapper.MapLinieToViewModels(new List<Linia> { linia }).FirstOrDefault();
             return View(liniaViewModel);
         }
 
@@ -79,7 +79,7 @@ namespace AplikacjaHodowcy.Controllers
         public IActionResult Edit(int Id)
         {
             Linia linia = _liniaRepository.GetLinia(Id);
-            LiniaViewModel liniaViewModel = _liniaMappingService.MapLinieToViewModels(new List<Linia> { linia }).FirstOrDefault();
+            LiniaViewModel liniaViewModel = _liniaMapper.MapLinieToViewModels(new List<Linia> { linia }).FirstOrDefault();
             return View(liniaViewModel);
         }
 
@@ -105,7 +105,7 @@ namespace AplikacjaHodowcy.Controllers
         public IActionResult Delete(int Id)
         {
             Linia linia = _liniaRepository.GetLinia(Id);
-            LiniaViewModel liniaViewModel = _liniaMappingService.MapLinieToViewModels(new List<Linia> { linia }).FirstOrDefault();
+            LiniaViewModel liniaViewModel = _liniaMapper.MapLinieToViewModels(new List<Linia> { linia }).FirstOrDefault();
             return View(liniaViewModel);
         }
 

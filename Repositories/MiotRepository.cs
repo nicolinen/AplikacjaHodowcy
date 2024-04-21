@@ -45,27 +45,32 @@ namespace AplikacjaHodowcy.Repositories
             return _context.Mioty.Include(l => l.Linia).ToList();
         }
 
-        public List<SelectListItem> GetLinie()
+        public List<Miot> GetAll()
         {
-            var listaLinii = new List<SelectListItem>();
-
-            List<Linia> Linie = _context.Linie.ToList();
-
-            listaLinii = Linie.Select(lm => new SelectListItem()
-            {
-                Value = lm.Id.ToString(),
-                Text = lm.Nazwa
-            }).ToList();
-
-            var defItem = new SelectListItem()
-            {
-                Value = "",
-                Text = "----Wybierz linię----"
-            };
-
-            listaLinii.Insert(0, defItem);
-
-            return listaLinii;
+            return _context.Mioty.ToList();
         }
+
+        //public List<SelectListItem> GetLinie()
+        //{
+        //    var listaLinii = new List<SelectListItem>();
+
+        //    List<Linia> Linie = _context.Linie.ToList();
+
+        //    listaLinii = Linie.Select(lm => new SelectListItem()
+        //    {
+        //        Value = lm.Id.ToString(),
+        //        Text = lm.Nazwa
+        //    }).ToList();
+
+        //    var defItem = new SelectListItem()
+        //    {
+        //        Value = "",
+        //        Text = "----Wybierz linię----"
+        //    };
+
+        //    listaLinii.Insert(0, defItem);
+
+        //    return listaLinii;
+        //}
     }
 }

@@ -25,7 +25,9 @@ builder.Services.AddScoped<IMiotRepository, MiotRepository>();
 builder.Services.AddScoped<ISzczeniakRepository, SzczeniakRepository>();
 builder.Services.AddScoped<IKonkursFactory, KonkursFactory>();
 builder.Services.AddTransient<LiniaMapper>();
+builder.Services.AddTransient<MiotMapper>();
 builder.Services.AddScoped<ILiniaService, LiniaService>();
+builder.Services.AddScoped<IMiotService, MiotService>();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
