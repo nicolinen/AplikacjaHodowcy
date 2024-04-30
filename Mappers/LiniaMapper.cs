@@ -10,8 +10,8 @@ namespace AplikacjaHodowcy.Mappers
             return linie.Select(linia => new LiniaViewModel
             {
                 Id = linia.Id,
-                Nazwa = linia.Nazwa,
-                Opis = linia.Opis
+                Name = linia.Name,
+                Description = linia.Description
                 // Tutaj możesz mapować inne właściwości z Linia, jeśli są potrzebne w LiniaViewModel
             });
         }

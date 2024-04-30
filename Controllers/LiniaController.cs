@@ -22,7 +22,7 @@ namespace AplikacjaHodowcy.Controllers
 
         public IActionResult Index()
         {
-            List<Linia> linie = _liniaRepository.GetAllLinie().OrderBy(l => l.Nazwa).ToList();
+            List<Linia> linie = _liniaRepository.GetAllLinie().OrderBy(l => l.Name).ToList();
             IEnumerable<LiniaViewModel> linieViewModel = _liniaMapper.MapLinieToViewModels(linie);
             return View(linieViewModel);
         }

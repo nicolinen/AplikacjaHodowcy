@@ -8,16 +8,16 @@
         [Required(ErrorMessage = "To pole jest wymagane")]
         [MaxLength(30)]
         [Display(Name = "Imię Matki")]
-        public string ImieMatki { get; set; }
+        public string MotherName { get; set; }
 
         [Required(ErrorMessage = "To pole jest wymagane")]
         [MaxLength(30)]
         [Display(Name = "Imię Ojca")]
-        public string ImieOjca { get; set; }
+        public string FatherName { get; set; }
 
         [MaxLength(5000)]
         [Display(Name = "O rodzicach")]
-        public string OpisRodzicow { get; set; }
+        public string ParentsDesc { get; set; }
 
         [Required(ErrorMessage = "To pole jest wymagane")]
         public string PhotoPath { get; set; }
@@ -25,7 +25,7 @@
         [Required(ErrorMessage = "To pole jest wymagane")]
         [MaxLength(30)]
         [Display(Name = "Nazwa Miotu")]
-        public string NazwaMiotu { get; set; }
+        public string LitterName { get; set; }
 
         [Display(Name = "Linia")]
         [ForeignKey("Linia")]

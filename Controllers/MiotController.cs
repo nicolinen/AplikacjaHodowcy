@@ -25,7 +25,7 @@ namespace Hodowla.Controllers
 
         public IActionResult Index()
         {
-            List<Miot> mioty = _miotRepository.GetWithLinia().OrderBy(x => x.NazwaMiotu).ToList();
+            List<Miot> mioty = _miotRepository.GetWithLinia().OrderBy(x => x.LitterName).ToList();
             IEnumerable<MiotViewModel> miotyViewModel = _miotMapper.MapMiotToViewModel(mioty);
             return View(miotyViewModel);
         }

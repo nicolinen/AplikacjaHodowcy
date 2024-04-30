@@ -31,10 +31,10 @@
     <thead class="table-header">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nazwa)
+                @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Opis)
+                        @Html.DisplayNameFor(model => model.Description)
             </th>
             <th></th>
         </tr>
@@ -43,13 +43,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Nazwa)
+                @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                <span id="opisLinia_@(item.Id)">@Html.DisplayFor(modelItem => item.Opis) </span>
+                            <span id="opisLinia_@(item.Id)">@Html.DisplayFor(modelItem => item.Description) </span>
                         <a href="#" id="toggleLink_@(item.Id)" onclick="showMore(@(item.Id)); return false;">Pokaż więcej</a>
                         <span id="opisFull_@(item.Id)" style="display:none;">
-                            @Html.DisplayFor(modelItem => item.Opis)
+                                @Html.DisplayFor(modelItem => item.Description)
                         </span>
             </td>
             <td>

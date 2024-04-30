@@ -10,11 +10,11 @@ namespace AplikacjaHodowcy.Mappers
             return mioty.Select(miot => new MiotViewModel
             {
                 Id = miot.Id,
-                ImieMatki = miot.ImieMatki,
-                ImieOjca = miot.ImieOjca,
-                OpisRodzicow = miot.OpisRodzicow,
+                MotherName = miot.MotherName,
+                FatherName = miot.FatherName,
+                ParentsDesc = miot.ParentsDesc,
                 PhotoPath = miot.PhotoPath,
-                NazwaMiotu = miot.NazwaMiotu,
+                LitterName = miot.LitterName,
                 LiniaId = miot.LiniaId
 
             });
@@ -25,11 +25,11 @@ namespace AplikacjaHodowcy.Mappers
             return new Miot
             {
                 Id = miotViewModel.Id,
-                ImieMatki = miotViewModel.ImieMatki,
-                ImieOjca = miotViewModel.ImieOjca,
-                OpisRodzicow = miotViewModel.OpisRodzicow,
+                MotherName = miotViewModel.MotherName,
+                FatherName = miotViewModel.FatherName,
+                ParentsDesc = miotViewModel.ParentsDesc,
                 PhotoPath = miotViewModel.PhotoPath,
-                NazwaMiotu = miotViewModel.NazwaMiotu,
+                LitterName = miotViewModel.LitterName,
                 LiniaId = miotViewModel.LiniaId
             };
         }

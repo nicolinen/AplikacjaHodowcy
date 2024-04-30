@@ -27,10 +27,10 @@ namespace AplikacjaHodowcy.Models
 
         //[Required]
         [MaxLength(1000)]
-        public virtual string KrajoweRegulacje{ get; set; } // Dodaj właściwość dla krajowych regulacji
+        public virtual string DomesticRegulations { get; set; } // Dodaj właściwość dla krajowych regulacji
 
         //[Required]
         [MaxLength(50)]
-        public string Kraj { get; set; } // Dodaj właściwość dla kraju
+        public string Country { get; set; } // Dodaj właściwość dla kraju
     }
 }

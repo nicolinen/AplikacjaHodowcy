@@ -6,8 +6,8 @@ namespace AplikacjaHodowcy.KonkursyFactory
     {
         public string Kraj 
         { 
-            get => base.Kraj; 
-            set => base.Kraj = value; 
+            get => base.Country; 
+            set => base.Country = value; 
         }
 
         public static List<string> Kraje = new List<string>

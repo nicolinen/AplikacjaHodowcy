@@ -56,11 +56,11 @@ namespace AplikacjaHodowcy.Repositories
         {
             return _context.Mioty
                 .Where(m => m.LiniaId == liniaId)
-                .OrderBy(x => x.NazwaMiotu)
+                .OrderBy(x => x.LitterName)
                 .Select(x => new SelectListItem
                 {
                     Value = x.Id.ToString(),
-                    Text = x.NazwaMiotu
+                    Text = x.LitterName
                 }).ToList();
         }
 
@@ -91,12 +91,12 @@ namespace AplikacjaHodowcy.Repositories
         {
             List<SelectListItem> mioty = _context.Mioty
                 .Where(m => m.LiniaId == liniaId)
-                .OrderBy(n => n.NazwaMiotu)
+                .OrderBy(n => n.LitterName)
                 .Select(n =>
                 new SelectListItem
                 {
                     Value = n.Id.ToString(),
-                    Text = n.NazwaMiotu
+                    Text = n.LitterName
                 }).ToList();
 
             return mioty;
@@ -110,7 +110,7 @@ namespace AplikacjaHodowcy.Repositories
             listaLinie = Linie.Select(l => new SelectListItem()
             {
                 Value = l.Id.ToString(),
-                Text = l.Nazwa
+                Text = l.Name
             }).ToList();
 
             var listaItem = new SelectListItem()

@@ -21,7 +21,7 @@ namespace AplikacjaHodowcy.Services
             var listaLinii = linie.Select(l => new SelectListItem
             {
                 Value = l.Id.ToString(),
-                Text = l.Nazwa
+                Text = l.Name
             }).ToList();
 
             var defItem = new SelectListItem()

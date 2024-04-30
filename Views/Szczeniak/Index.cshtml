@@ -39,7 +39,7 @@
                     @Html.DisplayNameFor(model => model.BirthDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Miot.NazwaMiotu)
+                        @Html.DisplayNameFor(model => model.Miot.LitterName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PhotoUrl)
@@ -62,7 +62,7 @@
                         @Html.DisplayFor(modelItem => item.BirthDate)
                     </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Miot.NazwaMiotu)
+                            @Html.DisplayFor(modelItem => item.Miot.LitterName)
             </td>
             <td>
                 <img id="PuppyPhoto" src="~/images/@item.PhotoUrl" width="100" height="100" />

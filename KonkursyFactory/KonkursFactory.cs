@@ -67,7 +67,7 @@ namespace AplikacjaHodowcy.KonkursyFactory
                 Name = name,
                 Desription = desription,
                 PhotoPath = photoPath,
-                KrajoweRegulacje = krajoweRegulacje
+                DomesticRegulations = krajoweRegulacje
             };
         }
 

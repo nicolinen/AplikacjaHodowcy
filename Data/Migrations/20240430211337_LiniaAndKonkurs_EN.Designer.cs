@@ -4,6 +4,7 @@ using AplikacjaHodowcy.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AplikacjaHodowcy.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240430211337_LiniaAndKonkurs_EN")]
+    partial class LiniaAndKonkurs_EN
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,7 +93,12 @@ namespace AplikacjaHodowcy.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("FatherName")
+                    b.Property<string>("ImieMatki")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("ImieOjca")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
@@ -99,17 +106,12 @@ namespace AplikacjaHodowcy.Data.Migrations
                     b.Property<int>("LiniaId")
                         .HasColumnType("int");
 
-                    b.Property<string>("LitterName")
+                    b.Property<string>("NazwaMiotu")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<string>("MotherName")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<string>("ParentsDesc")
+                    b.Property<string>("OpisRodzicow")
                         .HasMaxLength(5000)
                         .HasColumnType("nvarchar(max)");
 

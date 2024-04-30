@@ -29,19 +29,19 @@
     <thead class="table-header">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ImieMatki)
+                        @Html.DisplayNameFor(model => model.MotherName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ImieOjca)
+                        @Html.DisplayNameFor(model => model.FatherName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OpisRodzicow)
+                        @Html.DisplayNameFor(model => model.ParentsDesc)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NazwaMiotu)
+                        @Html.DisplayNameFor(model => model.LitterName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Linia.Nazwa)
+                @Html.DisplayNameFor(model => model.Linia.Name)
             </th>
             <th></th>
         </tr>
@@ -50,19 +50,19 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ImieMatki)
+                            @Html.DisplayFor(modelItem => item.MotherName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ImieOjca)
+                            @Html.DisplayFor(modelItem => item.FatherName)
             </td>
             <th style="text-align: justify;">
-                            <span id="opisRodzicow_@(item.Id)">@Html.DisplayFor(modelItem => item.OpisRodzicow)</span>
+                            <span id="opisRodzicow_@(item.Id)">@Html.DisplayFor(modelItem => item.ParentsDesc)</span>
             </th>
             <td>
-                @Html.DisplayFor(modelItem => item.NazwaMiotu)
+                            @Html.DisplayFor(modelItem => item.LitterName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Linia.Nazwa)
+                @Html.DisplayFor(modelItem => item.Linia.Name)
             </td>
             <td>
                     @if (User.Identity.IsAuthenticated)
