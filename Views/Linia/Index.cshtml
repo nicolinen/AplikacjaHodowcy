@@ -57,7 +57,7 @@
                     {
                 <a asp-action="Edit" asp-route-id="@item.Id">Edycja</a><br/>
                     }
-                <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a><br/>
+               <!-- <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a><br/> -->
                     @if (User.Identity.IsAuthenticated)
                     {
                 <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>

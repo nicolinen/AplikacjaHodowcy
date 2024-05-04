@@ -1,9 +1,4 @@
 ﻿using AplikacjaHodowcy.Models;
-
-using MailKit.Security;
-using Microsoft.AspNetCore.Mvc;
-using MimeKit;
-using MimeKit.Text;
 using Newtonsoft.Json;
 using System.Net;
 using System.Net.Mail;
