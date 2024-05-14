@@ -4,9 +4,9 @@ namespace AplikacjaHodowcy.KonkursyFactory
 {
     public class KonkursKrajowy : Konkurs
     {
-        public override string DomesticRegulations
-        { get => base.DomesticRegulations; 
-          set => base.DomesticRegulations = value; 
+        public override string KrajoweRegulacje
+        { get => base.KrajoweRegulacje; 
+          set => base.KrajoweRegulacje = value; 
         }
     }
 }
