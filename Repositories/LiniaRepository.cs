@@ -23,12 +23,6 @@ namespace AplikacjaHodowcy.Repositories
             _context.SaveChanges();
         }
 
-        //public IActionResult CreateModalForm()
-        //{
-        //    Linia linia = new Linia();
-        //    return PartialView("_CreateModalForm", linia);
-        //}
-
         public void Delete(Linia linia)
         {
             _context.Remove(linia);
