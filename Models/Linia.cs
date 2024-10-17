@@ -12,6 +12,7 @@
 
         [Required(ErrorMessage = "To pole jest wymagane")]
         [MaxLength(2000)]
+        [Display(Name = "Opis")]
         public string Description { get; set; }
 
     }
